@@ -1,0 +1,38 @@
+export interface ICreateQuestionParamsSchema {
+  email: string,
+  content: string,
+}
+
+export interface ISearchQuestionParamsSchema {
+  search: string,
+  tags: string[]
+}
+
+export const createQuestionBodyJsonSchema = {
+  type: 'object',
+  required: ['requiredKey'],
+  properties: {
+    someKey: { type: 'string' },
+    someOtherKey: { type: 'number' },
+    requiredKey: {
+      type: 'array',
+      maxItems: 3,
+      items: { type: 'integer' }
+    },
+    nullableKey: { type: ['number', 'null'] }, // or { type: 'number', nullable: true }
+    multipleTypesKey: { type: ['boolean', 'number'] },
+    multipleRestrictedTypesKey: {
+      oneOf: [
+        { type: 'string', maxLength: 5 },
+        { type: 'number', minimum: 10 }
+      ]
+    },
+    enumKey: {
+      type: 'string',
+      enum: ['John', 'Foo']
+    },
+    notTypeKey: {
+      not: { type: 'array' }
+    }
+  }
+}
