@@ -1,0 +1,9 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: conscientiz-ai-server
+    volumes:
+      - .:/app
+      - /app/node_modules 
