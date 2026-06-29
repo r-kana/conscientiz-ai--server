@@ -1,38 +1,26 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "emitDeclarationOnly": true,
     "rootDir": "./src",
     "outDir": "./dist",
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "esnext",
+    "module": "preserve",
     "moduleResolution": "bundler",
     "target": "esnext",
-    "types": [],
-    // For nodejs:
-    "lib": [
-      "ES2024"
-    ],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    "types": ["node"],
+    "lib": ["ES2024"],
     "paths": {
-      "#/*": [
-        "./src/*"
-      ],
-      "#env/*": [
-        "./src/config/env/*"
-      ],
+      "#/*": ["./src/*"],
+      "#env/*": ["./src/config/env/*"],
     },
     "typeRoots": [
       "./node_modules/@types",
       "./src/types"
     ],
-    // Other Outputs
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,

@@ -1,14 +1,14 @@
 import { Table, Column, Model, HasMany, DataType, BelongsToMany } from 'sequelize-typescript';
-import Post_Tag from './post_tags';
+import Post_Tag from './post_tag';
 import Comment from './comment';
 import Tag from './tag';
 
 @Table
 export default class Post extends Model {
-  @Column
+  @Column(DataType.STRING)
   declare title: string;
 
-  @Column
+  @Column(DataType.STRING)
   declare subtitle: string;
 
   @Column(DataType.TEXT)
@@ -18,5 +18,5 @@ export default class Post extends Model {
   declare comments: Comment[];
 
   @BelongsToMany(() => Tag, () => Post_Tag)
-    declare tags: Tag[];
+  declare tags: Tag[];
 }

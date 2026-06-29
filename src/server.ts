@@ -21,8 +21,16 @@ app.register(cors, {
 
 async function startServer() {
   await app.listen({ host: '0.0.0.0', port: env.APP_PORT })
+
+  console.log(`Server started successfully!`)
+  console.log(`Port: ${env.APP_PORT}`)
+
+  if (env.NODE_ENV === 'development') {
+    console.log(`Localhost: http://localhost:${env.APP_PORT}`)
+  }
 }
 
 startServer().catch((err) => {
+  console.error(`Sistema Falhou. Erro:  ${err.message}, stack: ${err.stack}`)
   process.exit(1)
 })

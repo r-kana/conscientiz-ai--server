@@ -3,10 +3,10 @@ import Post from "./post"
 
 @Table
 export default class Comment extends Model {
-  @Column
+  @Column(DataType.STRING)
   declare email: string;
 
-  @Column
+  @Column(DataType.STRING)
   declare name: string;
 
   @Column(DataType.TEXT)
@@ -16,6 +16,6 @@ export default class Comment extends Model {
   declare post: Post;
 
   @ForeignKey(() => Post)
-  @Column
+  @Column(DataType.INTEGER)
   declare postId: number;
 }

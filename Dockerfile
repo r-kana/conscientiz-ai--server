@@ -1,17 +1,18 @@
 FROM node:24.16-alpine AS base
+RUN corepack enable && corepack prepare pnpm@10.33.3 --activate
 
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev && npm cache clean --force
+COPY package.json pnpm-lock.yaml .npmrc ./
+RUN pnpm install --frozen-lockfile --prod
 
 FROM base AS builder
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
-COPY tsconfig.json .sequelizerc ./
+COPY package.json pnpm-lock.yaml .npmrc ./
+RUN pnpm install --frozen-lockfile
+COPY tsconfig.json .sequelizerc tsdown.config.ts ./
 COPY src ./src
-RUN npm run build
+RUN pnpm build
 
 FROM base AS runtime
 WORKDIR /app
@@ -20,4 +21,4 @@ COPY --from=builder /app/dist ./dist
 COPY package.json ./
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["node", "dist/server.mjs"]

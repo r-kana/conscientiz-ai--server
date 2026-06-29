@@ -3,9 +3,6 @@ import Question from "./question"
 
 @Table
 export default class Answer extends Model {
-  @Column
-  declare tag: string;
-
   @Column(DataType.TEXT)
   declare content: string;
 
@@ -13,6 +10,6 @@ export default class Answer extends Model {
   declare question: Question;
 
   @ForeignKey(() => Question)
-  @Column
+  @Column(DataType.INTEGER)
   declare questionId: number;
 }

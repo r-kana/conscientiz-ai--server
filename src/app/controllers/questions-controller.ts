@@ -5,7 +5,6 @@ import type {
 } from "../schemas/question-params-schema";
 import Question from "../models/question";
 import { ApplicationController } from "./application-controller";
-import { Op } from "sequelize";
 
 export class QuestionsController extends ApplicationController
 {

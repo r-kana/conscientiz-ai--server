@@ -1,4 +1,4 @@
-import { Table, Column, Model, ForeignKey } from 'sequelize-typescript';
+import { Table, Column, Model, ForeignKey, DataType } from 'sequelize-typescript';
 import Question from "./question"
 import Tag from "./tag"
 
@@ -6,10 +6,10 @@ import Tag from "./tag"
 @Table
 export default class Question_Tag extends Model {
   @ForeignKey(() => Tag)
-  @Column
+  @Column(DataType.INTEGER)
   declare tagId: number;
 
   @ForeignKey(() => Question)
-  @Column
+  @Column(DataType.INTEGER)
   declare questionId: number;
 }
