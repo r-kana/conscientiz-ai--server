@@ -1,8 +1,5 @@
-'use strict';
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Comment', {
+  export async function  up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Post',
+          model: 'Posts',
           key: 'id'
         },
       },
@@ -35,8 +32,7 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-  },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Comment');
   }
-};
+  export async function down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Comments');
+  }

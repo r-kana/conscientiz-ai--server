@@ -1,8 +1,6 @@
-'use strict';
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Post_Tag', {
+
+  export async function up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Post_Tags', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,7 +11,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Post',
+          model: 'Posts',
           key: 'id'
         },
       },
@@ -21,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Tag',
+          model: 'Tags',
           key: 'id'
         },
       },
@@ -34,8 +32,7 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-  },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Post_Tag');
   }
-};
+  export async function down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Post_Tags');
+  }

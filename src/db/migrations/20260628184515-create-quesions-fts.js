@@ -1,11 +1,7 @@
-'use strict';
-
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface, Sequelize) {
+  export async function up (queryInterface, Sequelize) {
     await queryInterface.sequelize.query(`
       CREATE VIRTUAL TABLE IF NOT EXISTS QuestionFTS 
-      USING fts5(content, content='Question', content_id='id');
+      USING fts5(content, content='Question');
 
       CREATE TRIGGER IF NOT EXISTS Question_ai AFTER INSERT ON Question BEGIN
         INSERT INTO QuestionFTS(rowid, content) VALUES (new.id, new.content);
@@ -20,12 +16,10 @@ module.exports = {
         INSERT INTO QuestionFTS(rowid, content) VALUES (new.id, new.content);
       END;
   `);
-  },
+  }
 
-  async down (queryInterface, Sequelize) {
+  export async function down (queryInterface, Sequelize) {
     await queryInterface.sequelize.query(`
       DROP TABLE IF EXISTS QuestionFTS;
     `);
   }
-};
-
