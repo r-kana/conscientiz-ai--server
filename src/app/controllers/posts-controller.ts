@@ -1,6 +1,7 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { ApplicationController } from "./application-controller";
 import Post from "../models/post"
+import Tag from "../models/tag"
 import Comment from "../models/comment"
 
 export default class PostsController extends ApplicationController
@@ -8,8 +9,16 @@ export default class PostsController extends ApplicationController
   static async index (request: FastifyRequest, reply: FastifyReply){
     const controller = new PostsController();
     const postRepository = controller.getRepository(Post);
+    const tagRepository = controller.getRepository(Tag);
 
-    const posts = await postRepository.findAll({ order: ['createdAt', 'DESC'] })
+    const posts = await postRepository.findAll({ 
+      order: [['createdAt', 'DESC']],
+      include: [{
+        model: tagRepository,
+        attributes: ["id", "name"],
+        through: {attributes: []}
+      }]
+    })
 
     controller.closeConnection();
     
