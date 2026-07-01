@@ -20,7 +20,7 @@ export default class CommentsController extends ApplicationController
     const params = request.params as { id: number }
     const controller = new CommentsController();
     const commentRepository = controller.getRepository(Comment);
-    const comments = await commentRepository.findAll({ where: {id: params.id},  order: ['createdAt', 'DESC'] })
+    const comments = await commentRepository.findAll({ where: {id: params.id},  order: [['createdAt', 'DESC']] })
     controller.closeConnection();
     
     return reply.status(200).send({...comments})
