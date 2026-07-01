@@ -3,3 +3,4 @@ src/@types
 .env
 build
 dist
+src/db/*.sqlite
