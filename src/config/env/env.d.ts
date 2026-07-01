@@ -10,7 +10,6 @@ declare global {
       APP_PORT: number,
       JWT_SECRET: string,
       FRONTEND_URL: string,
-      HASH_SALT_ROUNDS: number,
       INIT_CWD: string
     }
   }
