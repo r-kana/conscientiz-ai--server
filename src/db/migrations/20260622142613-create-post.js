@@ -13,8 +13,21 @@
       subtitle: {
         type: Sequelize.STRING
       },
+      imgSrc: {
+        type: Sequelize.STRING
+      },
       content: {
         type: Sequelize.TEXT
+      },
+      ratingMean: {
+        type: Sequelize.FLOAT,
+        defaultValue: 0,
+        allowNull: false
+      },
+      ratingCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
