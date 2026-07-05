@@ -6,6 +6,9 @@ import Tag from './tag';
 @Table
 export default class Question extends Model {
   @Column(DataType.STRING)
+  declare name: string;
+
+  @Column(DataType.STRING)
   declare email: string;
 
   @Column(DataType.TEXT)
