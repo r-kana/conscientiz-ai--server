@@ -14,6 +14,15 @@ export default class Post extends Model {
   @Column(DataType.TEXT)
   declare content: string;
 
+  @Column(DataType.FLOAT)
+  declare ratingMean: number;
+
+  @Column(DataType.INTEGER)
+  declare ratingCount: number;
+
+  @Column(DataType.STRING)
+  declare imgSrc: string;
+
   @HasMany(() => Comment)
   declare comments: Comment[];
 
