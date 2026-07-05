@@ -5,7 +5,8 @@ export interface ICreateQuestionParamsSchema {
 
 export interface ISearchQuestionParamsSchema {
   search: string,
-  tags: string[]
+  tags: string[],
+  limit: number
 }
 
 export const createQuestionBodyJsonSchema = {
