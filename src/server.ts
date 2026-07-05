@@ -1,13 +1,15 @@
 import { env } from './config/env/index'
 import fastify from 'fastify'
 import cors from '@fastify/cors'
+import fastifyStatic from '@fastify/static'
 // import fastifyJwt from '@fastify/jwt'
 import { routes } from './config/routes'
+import path from 'node:path'
 
 export const app = fastify({
   logger: true,
 })
-// app.register(dbConnector)
+
 app.register(routes)
 app.register(cors, {
   origin: env.FRONTEND_URL,
@@ -15,6 +17,11 @@ app.register(cors, {
   allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['Authorization'],
   maxAge: 3600,
+})
+
+app.register(fastifyStatic, {
+  root: path.join(import.meta.dirname, 'public'),
+  prefix: '/public/',
 })
 
 // fastify.addHook('onClose', async () => {});
