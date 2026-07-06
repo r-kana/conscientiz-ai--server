@@ -8,19 +8,22 @@ import Question from '../app/models/question';
 import Post from '../app/models/post';
 import Comment from '../app/models/comment';
 import Tag from '../app/models/tag';
+import path from 'node:path'
 
 export default function dbConnection() {
+  const storagePath = path.dirname(import.meta.dirname) + "/src/db/storage/"
+  console.log(storagePath)
   const config = {
     development: {
       dialect: databaseConfig.development.dialect as "sqlite",
-      storage: databaseConfig.development.storage,
+      storage: storagePath + "development.sqlite",
       loggin: databaseConfig.development.loggin,
       repositoryMode: databaseConfig.development.repositoryMode,
       models: [Answer, Question, Post, Comment, Tag, Post_Tag, Question_Tag],
     },
     production: {
       dialect: databaseConfig.production.dialect as "sqlite",
-      storage: databaseConfig.production.storage,
+      storage: storagePath + "production.sqlite",
       loggin: databaseConfig.production.loggin,
       repositoryMode: databaseConfig.production.repositoryMode,
       models: [Answer, Question, Post, Comment, Tag, Post_Tag, Question_Tag],

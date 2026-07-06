@@ -1,5 +1,5 @@
 import path from 'node:path'
-const storagePath = path.dirname(import.meta.dirname) + "/src/db/storage/"
+const storagePath = path.dirname(import.meta.dirname) + "/db/storage/"
 export default {
   development: {
     dialect: "sqlite",
