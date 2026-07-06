@@ -1,5 +1,4 @@
 node_modules
 src/@types
-.env
 build
 src/db/*.sqlite
