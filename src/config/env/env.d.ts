@@ -7,7 +7,8 @@ declare global {
       APP_PORT: number,
       JWT_SECRET: string,
       FRONTEND_URL: string,
-      INIT_CWD: string
+      INIT_CWD: string,
+      PUBLIC_PATH: string
     }
   }
 }

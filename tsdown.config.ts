@@ -20,7 +20,7 @@ export default defineConfig([
   {
     ...defaultConfig,
     entry: ['src/server.ts'],
-    external: ['better-sqlite3', 'better-sqlite3-pool'],
+    external: ['sqlite3'],
     clean: true,
   },
 ])

@@ -1,7 +1,11 @@
 import { Table, Column, Model, BelongsTo, DataType, ForeignKey } from 'sequelize-typescript';
 import Question from "./question"
 
-@Table
+@Table({
+  tableName: 'Answers',
+  modelName: 'Answer',
+  timestamps: true,
+})
 export default class Answer extends Model {
   @Column(DataType.TEXT)
   declare content: string;

@@ -3,7 +3,11 @@ import Answer from "./answer"
 import Question_Tag from "./question_tag"
 import Tag from './tag';
 
-@Table
+@Table({
+  tableName: 'Questions',
+  modelName: 'Question',
+  timestamps: true,
+})
 export default class Question extends Model {
   @Column(DataType.STRING)
   declare name: string;

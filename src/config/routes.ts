@@ -17,4 +17,6 @@ export const routes = async (app: FastifyInstance) => {
   app.get("/questions/:id", QuestionsController.show)
   app.get("/questions/search", QuestionsController.search)
 
+  app.get('/health', async () => ({ status: 'ok' }));
+
 }

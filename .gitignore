@@ -2,5 +2,4 @@ node_modules
 src/@types
 .env
 build
-dist
 src/db/*.sqlite

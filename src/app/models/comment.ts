@@ -1,7 +1,11 @@
 import { Table, Column, Model, BelongsTo, DataType, ForeignKey } from 'sequelize-typescript';
 import Post from "./post"
 
-@Table
+@Table({
+  tableName: 'Comments',
+  modelName: 'Comment',
+  timestamps: true,
+})
 export default class Comment extends Model {
   @Column(DataType.STRING)
   declare email: string;

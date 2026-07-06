@@ -3,7 +3,11 @@ import Post_Tag from './post_tag';
 import Comment from './comment';
 import Tag from './tag';
 
-@Table
+@Table({
+  tableName: 'Posts',
+  modelName: 'Post',
+  timestamps: true,
+})
 export default class Post extends Model {
   @Column(DataType.STRING)
   declare title: string;

@@ -3,7 +3,11 @@ import Post from "./post"
 import Tag from "./tag"
 
 
-@Table
+@Table({
+  tableName: 'Post_Tags',
+  modelName: 'Post_Tag',
+  timestamps: true,
+})
 export default class Post_Tag extends Model {
   @ForeignKey(() => Tag)
   @Column(DataType.INTEGER)

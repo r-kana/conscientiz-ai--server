@@ -20,7 +20,7 @@ app.register(cors, {
 })
 
 app.register(fastifyStatic, {
-  root: path.join(import.meta.dirname, 'public'),
+  root: process.env.INIT_CWD + "/src/public",
   prefix: '/public/',
 })
 

@@ -2,8 +2,11 @@ import { Table, Column, Model, ForeignKey, DataType } from 'sequelize-typescript
 import Question from "./question"
 import Tag from "./tag"
 
-
-@Table
+@Table({
+  tableName: 'Question_Tags',
+  modelName: 'Question_Tag',
+  timestamps: true,
+})
 export default class Question_Tag extends Model {
   @ForeignKey(() => Tag)
   @Column(DataType.INTEGER)
