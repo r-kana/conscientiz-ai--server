@@ -20,7 +20,7 @@ app.register(cors, {
 })
 
 app.register(fastifyStatic, {
-  root: path.resolve(process.env.INIT_CWD, './src/public'),
+  root: path.dirname(import.meta.dirname) + "/src/public",
   prefix: '/public/',
 })
 
@@ -31,7 +31,6 @@ async function startServer() {
 
   console.log(`Server started successfully!`)
   console.log(`Port: ${env.APP_PORT}`)
-  console.log(path.resolve(process.env.INIT_CWD, './src/public'))
 
   if (env.NODE_ENV === 'development') {
     console.log(`Localhost: http://localhost:${env.APP_PORT}`)
