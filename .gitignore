@@ -1,4 +1,5 @@
 node_modules
 src/@types
 build
-src/db/*.sqlite
+dist
+src/db/storage/*.sqlite
