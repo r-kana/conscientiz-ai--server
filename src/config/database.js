@@ -1,16 +1,16 @@
+import path from 'node:path'
+const storagePath = path.dirname(import.meta.dirname) + "/src/db/storage/"
 export default {
   development: {
     dialect: "sqlite",
-    storage: process.env.INIT_CWD + "/src/db/storage/development.sqlite",
+    storage: storagePath + "development.sqlite",
     loggin: false,
-    models: process.env.INIT_CWD + "/src/app/models",
     repositoryMode: true,
   },
   production: {
     dialect: "sqlite",
-    storage: process.env.INIT_CWD + "/src/db/storage/production.sqlite",
+    storage: storagePath + "production.sqlite",
     loggin: false,
-    models: process.env.INIT_CWD + "/src/app/models",
     repositoryMode: true,
   }
 }
